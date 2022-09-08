@@ -13,7 +13,7 @@ public class Object : MonoBehaviour
     {
         isHold = false;
         GameManager.instance.obj.Add(gameObject);
-        
+
     }
 
     void Update()
@@ -51,14 +51,12 @@ public class Object : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        GameManager.instance.Explosion.transform.position = this.gameObject.transform.position;
+
         if (!collision.gameObject.CompareTag("Player") && !collision.gameObject.CompareTag("Object"))
         {
             Destroy(this.gameObject);
-
-            //Debug.Log(collision.gameObject);
-
-
+            GameManager.instance.Explosion.transform.position = this.gameObject.transform.position;
+            GameManager.instance.Explosion.Play();
         }
         if (collision.gameObject.CompareTag("Student"))
         {
@@ -68,23 +66,19 @@ public class Object : MonoBehaviour
                 health.TakeDamage(1, gameObject, this.gameObject);
             }
             Destroy(this.gameObject);
-            Debug.Log("çarptı");
         }
-        GameManager.instance.Explosion.Play();
+        if (collision.gameObject.CompareTag("Teacher"))
+        {
+            Teacher health = collision.gameObject.GetComponent<Teacher>();
+            if (health != null)
+            {
+                health.TakeDamage(1, gameObject, this.gameObject);
+            }
+            Destroy(this.gameObject);
+        }
+        if((collision.gameObject.CompareTag("Teacher") || collision.gameObject.CompareTag("Student")) && GameManager.instance.isDanger)
+        {
+            Debug.Log("game over");
+        }
     }
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.CompareTag("Student"))
-    //    {
-    //        Health health = other.GetComponent<Health>();
-    //        if (health != null)
-    //        {
-    //            health.TakeDamage(1, gameObject);
-    //        }
-    //        Destroy(this.gameObject);
-    //        Debug.Log(other.gameObject);
-    //        Debug.Log("çarptı");
-    //    }
-    //}
-    //
 }

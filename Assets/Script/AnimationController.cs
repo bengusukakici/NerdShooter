@@ -29,10 +29,12 @@ public class AnimationController : MonoBehaviour
     }
     public void Idle()
     {
-        animator.SetBool("isIdle", true);
+        animator.SetTrigger("isIdle");
+
+        GameManager.instance.isDanger = true;
     }
     public void Idle2()
     {
-        animator.SetBool("isIdle", false);
+        GameManager.instance.isDanger = false;
     }
 }

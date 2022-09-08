@@ -15,7 +15,6 @@ public class Health : MonoBehaviour
             lastSender = sender;
             if (health < 0)
             {
-                Debug.Log(health);
             }
             else if (collision.GetComponent<Object>().hitDamage)
             {
@@ -23,7 +22,6 @@ public class Health : MonoBehaviour
             }
             else anim.LowDamage();
 
-            Debug.Log(collision.GetComponent<Object>().hitDamage);
         }
     }
 

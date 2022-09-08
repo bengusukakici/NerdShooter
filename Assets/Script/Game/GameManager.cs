@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject hold;
     public bool isHold;
+    public bool isDanger;
+
 
     public ParticleSystem Explosion;
     private void Awake()
@@ -25,6 +27,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         isHold = false;
+        isDanger = false;
         shootscript.enabled = false;
     }
 }
