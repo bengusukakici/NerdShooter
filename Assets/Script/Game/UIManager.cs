@@ -24,10 +24,10 @@ public class UIManager : MonoBehaviour
 
     public GameObject shootPanel;
 
-    //[Header("Start Panel")]
-    //[SerializeField] public GameObject startPanel;
-    //[SerializeField] private GameObject startButton;
-    //
+    [Header("Start Panel")]
+    [SerializeField] public GameObject startPanel;
+    [SerializeField] private GameObject startButton;
+    
     //[Header("In Game Panel")]
     //[SerializeField] private GameObject inGamePanel;
     //[SerializeField] private TextMeshProUGUI levelText;
@@ -35,13 +35,13 @@ public class UIManager : MonoBehaviour
     //[SerializeField] private GameObject pie;
     //[SerializeField] private GameObject joystick;
     //
-    //[Header("Fail Panel")]
-    //public GameObject failPanel;
-    //[SerializeField] private GameObject failButton;
-    //
-    //[Header("Victory Panel")]
-    //public GameObject victoryPanel;
-    //[SerializeField] private GameObject nextButton;
+    [Header("Fail Panel")]
+    public GameObject failPanel;
+    [SerializeField] private GameObject failButton;
+    
+    [Header("Victory Panel")]
+    public GameObject victoryPanel;
+    [SerializeField] private GameObject nextButton;
     //
     //[Header("Button Scale Animation Settings")]
     //[SerializeField] float buttonScaleAnimationSpeed = 0.3f;
@@ -59,6 +59,8 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+
+        Time.timeScale = 0;
         ShootActive(false);
         //levelText.text = "Level" + PlayerPrefs.GetInt("lastLevel", 1).ToString();
         if (FindObjectOfType<EventSystem>() == null)
@@ -82,13 +84,13 @@ public class UIManager : MonoBehaviour
     }
     public void StartPanel()
     {
-        Time.timeScale = 1;
         //startPanel.SetActive(true);
         CancelInvoke("StartPanel");
     }
     public void StartLevel()
     {
-        //startPanel.SetActive(false);
+        Time.timeScale = 1;
+        startPanel.SetActive(false);
     }
 
     public void NextLevel()
@@ -97,7 +99,7 @@ public class UIManager : MonoBehaviour
     }
     public void RestartLevel()
     {
-        //LevelManager.Instance.LevelRestart();
+        LevelManager.Instance.LevelRestart();
     }
 
     void ScaleButton(GameObject button)

@@ -33,4 +33,14 @@ public class AnimationController : MonoBehaviour
     {
         GameManager.instance.isDanger = true;
     }
+    public void Dead()
+    {
+        animator.SetTrigger("isDead");
+    }
+    public void LevelComplete()
+    {
+        Time.timeScale = 0;
+        UIManager.Instance.victoryPanel.SetActive(true);
+        
+    }
 }

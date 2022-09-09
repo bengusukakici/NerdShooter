@@ -41,13 +41,13 @@ public class LevelManager : MonoBehaviour
             _isFirstLevelFirstlyCompleted = 1;
             PlayerPrefs.SetInt("firstLevelCompleted", _isFirstLevelFirstlyCompleted);
         }
-        Time.timeScale = 0;
-        //UIManager.Instance.victoryPanel.SetActive(true);
+        FindObjectOfType<AnimationController>().Dead();
+        //animasyonun sonuna ekle
     }
     public void LevelFailed()
     {
         Time.timeScale = 0;
-        //UIManager.Instance.failPanel.SetActive(true);
+        UIManager.Instance.failPanel.SetActive(true);
     }
     public void LevelRestart()
     {

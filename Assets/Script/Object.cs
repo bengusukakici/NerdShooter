@@ -75,19 +75,19 @@ public class Object : MonoBehaviour
             if (health != null && GameManager.instance.student.Count == 0)
             {
                 health.TakeHealth(1, gameObject, this.gameObject);
-                Debug.Log("healthı eksiltiyor");
+                //Debug.Log("healthı eksiltiyor");
             }
             else if (damage != null)
             {
                 damage.TakeDamage(1, gameObject, this.gameObject);
-
-                Debug.Log("damage eksiltiyor");
+                //unlem
+                //Debug.Log("damage eksiltiyor");
             }
             Destroy(this.gameObject);
         }
         if((collision.gameObject.CompareTag("Teacher") || collision.gameObject.CompareTag("Student")) && GameManager.instance.isDanger)
         {
-            Debug.Log("game over");
+            LevelManager.Instance.LevelFailed();
         }
     }
 }

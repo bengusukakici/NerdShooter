@@ -21,6 +21,7 @@ public class Health : MonoBehaviour
             if (health < 0)
             {
                 GameManager.instance.student.Remove(this.gameObject);
+                anim.Dead();
             }
             else if (collision.GetComponent<Object>().hitDamage)
             {

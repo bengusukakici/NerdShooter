@@ -28,13 +28,9 @@ public class Teacher : MonoBehaviour
     
     public IEnumerator SetAnimationC()
     {
-        Debug.Log("say");
-
-        yield return new WaitForSeconds(Damage * 3);
-
-        Debug.Log("say2");
+        yield return new WaitForSeconds(Damage * 3); //damaga*3
         anim.Idle();
-        StartCoroutine(SetAnimationC());
+        //StartCoroutine(SetAnimationC());
     }
     public void TakeDamage(int amount, GameObject sender, GameObject collision)
     {
@@ -42,9 +38,7 @@ public class Teacher : MonoBehaviour
         {
             Damage--;
             lastSender = sender;
-            //anim.Idle();
-            //Debug.Log(Damage);
-
+            GameManager.instance.Danger.Play();
         }
     }
     public void TakeHealth(int amount, GameObject sender, GameObject collision)
@@ -53,11 +47,11 @@ public class Teacher : MonoBehaviour
         {
             health--;
             lastSender = sender;
-            //anim.Idle();
-            //Debug.Log(health);
+            GameManager.instance.Emoji.Play(); 
+            GameManager.instance.Emoji.Play();
             if (health < 0)
             {
-                Debug.Log("winnn");
+                LevelManager.Instance.LevelComplete();
             }
         }
     }

@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
 
     public ParticleSystem Explosion;
+    public ParticleSystem Emoji;
+    public ParticleSystem Danger;
     private void Awake()
     {
         if (instance == null)
