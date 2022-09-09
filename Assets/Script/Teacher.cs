@@ -5,7 +5,8 @@ using UnityEngine;
 public class Teacher : MonoBehaviour
 {
     private GameObject lastSender;
-    public int health = 3;
+    public int Damage = 3;
+    public int health = 2;
     public AnimationController anim;
 
     void Start()
@@ -27,19 +28,37 @@ public class Teacher : MonoBehaviour
     
     public IEnumerator SetAnimationC()
     {
-        yield return new WaitForSeconds(health * 3);
+        Debug.Log("say");
+
+        yield return new WaitForSeconds(Damage * 3);
+
+        Debug.Log("say2");
         anim.Idle();
         StartCoroutine(SetAnimationC());
     }
     public void TakeDamage(int amount, GameObject sender, GameObject collision)
     {
-        if (sender != lastSender && health > 3)
+        if (sender != lastSender)
+        {
+            Damage--;
+            lastSender = sender;
+            //anim.Idle();
+            //Debug.Log(Damage);
+
+        }
+    }
+    public void TakeHealth(int amount, GameObject sender, GameObject collision)
+    {
+        if (sender != lastSender)
         {
             health--;
             lastSender = sender;
             //anim.Idle();
-            Debug.Log(health);
-            
+            //Debug.Log(health);
+            if (health < 0)
+            {
+                Debug.Log("winnn");
+            }
         }
     }
 }

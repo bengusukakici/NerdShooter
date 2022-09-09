@@ -69,10 +69,19 @@ public class Object : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Teacher"))
         {
+            Teacher damage = collision.gameObject.GetComponent<Teacher>();
             Teacher health = collision.gameObject.GetComponent<Teacher>();
-            if (health != null)
+            
+            if (health != null && GameManager.instance.student.Count == 0)
             {
-                health.TakeDamage(1, gameObject, this.gameObject);
+                health.TakeHealth(1, gameObject, this.gameObject);
+                Debug.Log("healthı eksiltiyor");
+            }
+            else if (damage != null)
+            {
+                damage.TakeDamage(1, gameObject, this.gameObject);
+
+                Debug.Log("damage eksiltiyor");
             }
             Destroy(this.gameObject);
         }

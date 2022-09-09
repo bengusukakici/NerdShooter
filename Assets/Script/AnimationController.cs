@@ -12,13 +12,6 @@ public class AnimationController : MonoBehaviour
         if (instance != null)
             instance = this;
     }
-    void Start()
-    {
-    }
-    void Update()
-    {
-
-    }
     public void HitDamage()
     {
         animator.SetTrigger("hitDamage");
@@ -31,10 +24,13 @@ public class AnimationController : MonoBehaviour
     {
         animator.SetTrigger("isIdle");
 
-        GameManager.instance.isDanger = true;
     }
-    public void Idle2()
+    public void DangerFalse()
     {
         GameManager.instance.isDanger = false;
+    }
+    public void DangerTrue()
+    {
+        GameManager.instance.isDanger = true;
     }
 }
